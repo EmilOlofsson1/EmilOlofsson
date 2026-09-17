@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header{% if page.url == '/' %} site-header--home{% endif %}">
+    <nav class="nav" aria-label="Main">
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+      <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+      <a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>Academic Publications</a>
+      <a href="{{ '/writings/' | relative_url }}"{% if page.url == '/writings/' or page.layout == 'post' %} aria-current="page"{% endif %}>Other Writings</a>
+      <a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
+    </nav>
+
+    {% if page.url == '/' %}
+    <h1 class="name">{{ site.title }}</h1>
+    <p class="role">PhD Candidate in Political Science, Umeå University</p>
+    <div class="ridge" aria-hidden="true">
+      <svg viewBox="0 0 1000 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="ridge-line ridge-back" d="M0,120 L90,70 L170,95 L260,40 L340,80 L430,55 L520,100 L610,60 L700,90 L790,45 L880,85 L1000,60" />
+        <path class="ridge-line ridge-front" d="M0,140 L70,100 L150,125 L240,85 L330,115 L420,75 L510,110 L600,80 L690,120 L780,90 L870,125 L1000,100" />
+      </svg>
+    </div>
+    {% else %}
+    <p class="name name--compact"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
+    {% endif %}
+  </header>
+
+  <main class="content">
+    {% unless page.url == '/' or page.layout == 'post' %}<h2 class="page-title">{{ page.title }}</h2>{% endunless %}
+    {{ content }}
+  </main>
+
+  <footer class="footer">
+    <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
+  </footer>
+
+</div>
+</body>
+</html>

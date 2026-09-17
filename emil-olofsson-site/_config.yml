@@ -1,0 +1,5 @@
+title: "Emil Olofsson"
+description: ""
+baseurl: ""
+markdown: kramdown
+permalink: /writings/:title/

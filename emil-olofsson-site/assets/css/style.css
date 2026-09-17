@@ -1,0 +1,253 @@
+:root {
+  --color-bg: #EEEEE5;
+  --color-text: #24261F;
+  --color-muted: #63665A;
+  --color-accent: #4B5D45;
+  --color-accent-2: #9C5A34;
+  --color-rule: #D4D5C7;
+
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+
+  --measure: 640px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.75rem;
+  --space-4: 3rem;
+  --space-5: 5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(75, 93, 69, 0.45);
+}
+
+a:hover {
+  text-decoration-color: var(--color-accent-2);
+  color: var(--color-accent-2);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent-2);
+  outline-offset: 3px;
+}
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+  padding-top: var(--space-4);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-4);
+}
+
+.nav a {
+  color: var(--color-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  color: var(--color-accent);
+}
+
+.nav a[aria-current="page"] {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.site-header--home .nav {
+  margin-bottom: var(--space-5);
+}
+
+.name {
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.05;
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.role {
+  font-size: 1.2rem;
+  color: var(--color-muted);
+  margin: 0 0 var(--space-5);
+  max-width: var(--measure);
+}
+
+.name--compact {
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 500;
+  margin: 0 0 var(--space-4);
+}
+
+.name--compact a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.ridge {
+  width: 100%;
+  height: 90px;
+  margin-bottom: var(--space-5);
+}
+
+.ridge svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ridge-line {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ridge-back {
+  stroke: var(--color-rule);
+}
+
+.ridge-front {
+  stroke: var(--color-accent);
+  opacity: 0.55;
+}
+
+/* ---------- Content ---------- */
+
+.content {
+  padding-bottom: var(--space-5);
+  max-width: var(--measure);
+}
+
+.page-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin: 0 0 var(--space-3);
+  padding-top: var(--space-1);
+  border-top: 1px solid var(--color-rule);
+  padding-top: var(--space-3);
+}
+
+.content p {
+  margin: 0 0 var(--space-2);
+}
+
+.empty-note {
+  color: var(--color-muted);
+}
+
+/* ---------- Blog list ---------- */
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.post-list-item a {
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.post-list-item a:hover {
+  text-decoration: underline;
+}
+
+.post-list-date {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* ---------- Single post ---------- */
+
+.post-meta {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-3) !important;
+}
+
+.post-title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 var(--space-3);
+  line-height: 1.15;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: var(--space-4) 0 var(--space-5);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  max-width: var(--measure);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  body {
+    font-size: 1.05rem;
+  }
+  .site-header {
+    padding-top: var(--space-3);
+  }
+  .nav {
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+  .post-list-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
